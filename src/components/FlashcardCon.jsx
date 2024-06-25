@@ -35,7 +35,9 @@ const FlashcardCon = () => {
       answer: "Controlled element",
     },
   ]);
-  return
+  return <div className="flashcards">
+    
+  </div>;
 };
 
 export default FlashcardCon;
