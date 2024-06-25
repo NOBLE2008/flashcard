@@ -43,9 +43,8 @@ const FlashcardCon = () => {
     },
   ]);
 
-  const reveal = (id) => {
-    return () => {
-      return setQuestions((current) => {
+  const show = (id) => {
+    return setQuestions((current) => {
         return current.map((item) => {
           return (id === item.id)
             ? {
@@ -58,6 +57,26 @@ const FlashcardCon = () => {
             }
         });
       })
+  }
+
+  const reset = (id) => {
+    return setQuestions((current) => {
+        return current.map((item) => {
+            return id !== item.id ?  {
+                ...item,
+                reaveled: false,
+            }: {
+                ...item,
+                reaveled: item.reaveled,
+            }
+        })
+    })
+  }
+
+  const reveal = (id) => {
+    return () => {
+      show(id)
+      reset(id)
     };
   };
 
