@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Flashcard = (props) => {
+const Flashcard = ({detail, id, reveal}) => {
   return (
-    <div>
-        {props.detail.question}
+    <div onClick={reveal(id)} className={detail.reaveled === true ? 'selected': ''}>
+        {detail.reaveled ? detail.answer : detail.question}
     </div>
   )
 }

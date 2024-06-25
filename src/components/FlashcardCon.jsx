@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Flashcard from "./Flashcard";
-import '../App.css'
+import "../App.css";
 const FlashcardCon = () => {
   const [questions, setQuestions] = useState([
     {
@@ -44,22 +44,25 @@ const FlashcardCon = () => {
   ]);
 
   const reveal = (id) => {
-    return setQuestions((current) => {
-      return current.map((item) => {
-        return item.reaveled === item.id === id ? !item.reaveled : item.reaveled;
-      });
-    });
+    return () => {
+      return setQuestions((current) => {
+        return current.map((item) => {
+          return (id === item.id)
+            ? {
+                ...item,
+                reaveled: !item.reaveled
+            }
+            : {
+                ...item,
+                reaveled: item.reaveled
+            }
+        });
+      })
+    };
   };
 
   const render = (item, index) => {
-    return (
-      <Flashcard
-        detail={item}
-        key={index}
-        id={item.id}
-        reveal={reveal}
-      />
-    );
+    return <Flashcard detail={item} key={index} id={item.id} reveal={reveal} />;
   };
   return <div className="flashcards">{questions.map(render)}</div>;
 };
