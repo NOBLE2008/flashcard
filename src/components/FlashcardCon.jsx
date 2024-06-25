@@ -1,10 +1,9 @@
 import React from 'react'
+import Flashcard from './Flashcard'
 
 const FlashcardCon = () => {
   return (
-    <div>
-      
-    </div>
+
   )
 }
 
