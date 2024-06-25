@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Flashcard = () => {
+const Flashcard = (props) => {
   return (
     <div>
-      
+        {props.detail.question}
     </div>
   )
 }
